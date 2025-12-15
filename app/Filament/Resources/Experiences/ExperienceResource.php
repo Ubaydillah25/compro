@@ -18,7 +18,13 @@ class ExperienceResource extends Resource
 {
     protected static ?string $model = Experience::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static ?string $navigationLabel = 'Experiences';
+
+    // ✅ WAJIB: JANGAN ?string
+    protected static string|\UnitEnum|null $navigationGroup = 'Website Content';
+
+    protected static string|BackedEnum|null $navigationIcon =
+        Heroicon::OutlinedAcademicCap;
 
     public static function form(Schema $schema): Schema
     {
@@ -30,19 +36,12 @@ class ExperienceResource extends Resource
         return ExperiencesTable::configure($table);
     }
 
-    public static function getRelations(): array
-    {
-        return [
-            //
-        ];
-    }
-
     public static function getPages(): array
     {
         return [
-            'index' => ListExperiences::route('/'),
+            'index'  => ListExperiences::route('/'),
             'create' => CreateExperience::route('/create'),
-            'edit' => EditExperience::route('/{record}/edit'),
+            'edit'   => EditExperience::route('/{record}/edit'),
         ];
     }
 }

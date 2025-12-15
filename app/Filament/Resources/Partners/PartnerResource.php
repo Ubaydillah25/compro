@@ -19,7 +19,7 @@ class PartnerResource extends Resource
     protected static ?string $model = Partner::class;
 
     protected static ?string $navigationLabel = 'Partners / Lawyers';
-    protected static ?string $navigationGroup = 'Website Content';
+    protected static string|\UnitEnum|null $navigationGroup = 'Website Content';
 
     protected static string|BackedEnum|null $navigationIcon =
         Heroicon::OutlinedUserGroup;

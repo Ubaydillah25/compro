@@ -21,7 +21,8 @@ class ContactMessageResource extends Resource
     protected static ?string $model = ContactMessage::class;
 
     protected static ?string $navigationLabel = 'Contact Messages';
-    protected static ?string $navigationGroup = 'Inbox';
+    protected static string|\UnitEnum|null $navigationGroup = 'Inbox';
+
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 

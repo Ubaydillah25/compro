@@ -19,7 +19,8 @@ class PracticeAreaResource extends Resource
     protected static ?string $model = PracticeArea::class;
 
     protected static ?string $navigationLabel = 'Practice Areas';
-    protected static ?string $navigationGroup = 'Website Content';
+
+    protected static string|\UnitEnum|null $navigationGroup = 'Website Content';
 
     protected static string|BackedEnum|null $navigationIcon =
         Heroicon::OutlinedBriefcase;

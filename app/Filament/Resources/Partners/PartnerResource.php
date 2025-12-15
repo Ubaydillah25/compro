@@ -18,7 +18,11 @@ class PartnerResource extends Resource
 {
     protected static ?string $model = Partner::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static ?string $navigationLabel = 'Partners / Lawyers';
+    protected static ?string $navigationGroup = 'Website Content';
+
+    protected static string|BackedEnum|null $navigationIcon =
+        Heroicon::OutlinedUserGroup;
 
     public static function form(Schema $schema): Schema
     {
@@ -30,19 +34,12 @@ class PartnerResource extends Resource
         return PartnersTable::configure($table);
     }
 
-    public static function getRelations(): array
-    {
-        return [
-            //
-        ];
-    }
-
     public static function getPages(): array
     {
         return [
-            'index' => ListPartners::route('/'),
+            'index'  => ListPartners::route('/'),
             'create' => CreatePartner::route('/create'),
-            'edit' => EditPartner::route('/{record}/edit'),
+            'edit'   => EditPartner::route('/{record}/edit'),
         ];
     }
 }

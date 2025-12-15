@@ -18,9 +18,13 @@ class PageResource extends Resource
 {
     protected static ?string $model = Page::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedDocumentText;
+    protected static ?string $navigationLabel = 'Pages';
 
-    // Title record = column "title" in database
+    protected static string|\UnitEnum|null $navigationGroup = 'Website Content';
+
+    protected static string|BackedEnum|null $navigationIcon =
+        Heroicon::OutlinedDocumentText;
+
     protected static ?string $recordTitleAttribute = 'title';
 
     public static function form(Schema $schema): Schema
@@ -33,17 +37,43 @@ class PageResource extends Resource
         return PagesTable::configure($table);
     }
 
-    public static function getRelations(): array
-    {
-        return [];
-    }
-
     public static function getPages(): array
     {
         return [
-            'index'  => ListPages::route('/'),
+            'index' => ListPages::route('/'),
             'create' => CreatePage::route('/create'),
-            'edit'   => EditPage::route('/{record}/edit'),
+            'edit' => EditPage::route('/{record}/edit'),
         ];
     }
+    // protected static ?string $model = Page::class;
+
+    // protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+
+    // protected static ?string $recordTitleAttribute = 'admin';
+
+    // public static function form(Schema $schema): Schema
+    // {
+    //     return PageForm::configure($schema);
+    // }
+
+    // public static function table(Table $table): Table
+    // {
+    //     return PagesTable::configure($table);
+    // }
+
+    // public static function getRelations(): array
+    // {
+    //     return [
+    //         //
+    //     ];
+    // }
+
+    // public static function getPages(): array
+    // {
+    //     return [
+    //         'index' => ListPages::route('/'),
+    //         'create' => CreatePage::route('/create'),
+    //         'edit' => EditPage::route('/{record}/edit'),
+    //     ];
+    // }
 }

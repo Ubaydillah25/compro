@@ -18,7 +18,11 @@ class PracticeAreaResource extends Resource
 {
     protected static ?string $model = PracticeArea::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static ?string $navigationLabel = 'Practice Areas';
+    protected static ?string $navigationGroup = 'Website Content';
+
+    protected static string|BackedEnum|null $navigationIcon =
+        Heroicon::OutlinedBriefcase;
 
     public static function form(Schema $schema): Schema
     {
@@ -30,19 +34,12 @@ class PracticeAreaResource extends Resource
         return PracticeAreasTable::configure($table);
     }
 
-    public static function getRelations(): array
-    {
-        return [
-            //
-        ];
-    }
-
     public static function getPages(): array
     {
         return [
-            'index' => ListPracticeAreas::route('/'),
+            'index'  => ListPracticeAreas::route('/'),
             'create' => CreatePracticeArea::route('/create'),
-            'edit' => EditPracticeArea::route('/{record}/edit'),
+            'edit'   => EditPracticeArea::route('/{record}/edit'),
         ];
     }
 }
